@@ -66,18 +66,28 @@ function ModernPortfolio({ data }) {
       </section>
 
       <main className="modern-grid">
-        {data.skills && (
-          <section className="modern-card modern-card-skills">
-            <div className="modern-card-top">
-              <span className="modern-number">01 / SKILLS</span>
-              <span className="modern-card-symbol">✳</span>
-            </div>
-            <h3>My <br />toolkit </h3>
-            <h4><p>{data.skills}</p></h4>
-            <span className="modern-card-index">CAPABILITIES</span>
-          </section>
-        )}
+          {data.skills && (
+            <section className="modern-card modern-card-skills">
+              <div className="modern-card-top">
+                <span className="modern-number">01 / SKILLS</span>
+                <span className="modern-card-symbol">✳</span>
+              </div>
 
+          <h3>My <br />toolkit</h3>
+
+          <div className="modern-skills-list">
+              {data.skills.split(/[,\n]/).map((skill) => skill.trim()).filter(Boolean).map((skill, index) => (
+              <span className="modern-skill-tag" key={index}>
+              {skill}
+              </span>
+  ))}
+</div>
+
+          <span className="modern-card-index">CAPABILITIES</span>
+
+            </section>
+          )}
+            
         {data.projects && (
           <section className="modern-card modern-card-projects">
             <div className="modern-card-top">

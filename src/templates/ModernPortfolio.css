@@ -103,7 +103,7 @@
   margin: 0 0 30px;
   color: var(--modern-cream);
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(3rem, 7.5vw, 6.4rem);
+  font-size: clamp(2.8rem, 6vw, 5rem);  
   font-weight: 600;
   letter-spacing: -5px;
   line-height: 0.98;
@@ -159,27 +159,19 @@
 }
 
 .modern-art-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 230px;
-  height: 230px;
-  border: 1px solid rgba(212, 230, 109, 0.55);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+position: absolute;
+top: 50%;
+left: 50%;
+width: 230px;
+height: 230px;
+border: 1px solid rgba(212, 230, 109, 0.35);
+border-radius: 50%;
+transform: translate(-50%, -50%);
 }
 
 .modern-art-ring::before,
 .modern-art-ring::after {
-  position: absolute;
-  content: "";
-  border: 1px solid rgba(212, 230, 109, 0.28);
-  border-radius: 50%;
-  inset: 20px;
-}
-
-.modern-art-ring::after {
-  inset: 42px;
+display: none;
 }
 
 .modern-art-block {
@@ -288,10 +280,19 @@
   background: #dfe6d5;
   color: var(--modern-olive);
 }
+.modern-container .modern-card-skills {
+  background: #dfe6d5;
+  color: var(--modern-olive);
+}
+
+.modern-container .modern-card-skills .modern-skills-list {
+  margin-top: 4px;
+  margin-bottom: 20px;
+} 
 
 .modern-container .modern-card-projects {
-  background: var(--modern-lime);
-  color: var(--modern-olive);
+background: #e8ebdf;
+color: var(--modern-olive);
 }
 
 .modern-container .modern-card-experience {
@@ -322,19 +323,19 @@
 }
 
 .modern-container .modern-card h3 {
-  margin: 38px 0 16px;
+  margin: 28px 0 14px;
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 600;
-  letter-spacing: -1.3px;
-  line-height: 1.05;
+  letter-spacing: -0.7px;
+  line-height: 1.2;
 }
 
-.modern-container .modern-card p {
-  margin: 0 0 35px;
+
+  .modern-container .modern-card p {margin: 0 0 35px;
   color: inherit;
-  font-size: 13px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 1.8;
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
@@ -515,4 +516,22 @@
     scroll-behavior: auto;
     transition: none !important;
   }
+}
+/* Skills tags */
+.modern-container .modern-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.modern-container .modern-skill-tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid rgba(53, 70, 56, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--modern-olive);
+  font-size: 14px;
+  line-height: 1.4;
 }

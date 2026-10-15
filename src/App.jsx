@@ -351,9 +351,11 @@ if (!session) {
           <p>Manage your saved portfolios in one place.</p>
           <div className="saved-grid">
                     {savedPortfolios.map((portfolio) => (
-                      <article className="saved-card" key={portfolio.id}>
+                      <article className={`saved-card saved-card-${portfolio.template || "simple"}`}
+                           key={portfolio.id}>
+                       
                         <p className="template-number">
-                          {portfolio.template || "simple"} TEMPLATE
+                          {(portfolio.template || "simple").toUpperCase()}
                         </p>
                         <h3>{portfolio.full_name || "Untitled Portfolio"}</h3>
                         <p>{portfolio.email || "No email provided"}</p>

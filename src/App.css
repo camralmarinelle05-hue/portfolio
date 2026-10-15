@@ -1370,28 +1370,50 @@ home-screen .saved-actions .action-delete {
 
 .saved-section h2 {
   margin-bottom: 20px;
-  line-height: 1.3;
+  line-height: 1.2;
+  color: #302116;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .saved-card {
   box-sizing: border-box;
   min-width: 0;
-  padding: 22px;
-  margin-bottom: 18px;
-  border: 1px solid #e7ded5;
-  border-radius: 14px;
+  padding: 26px;
+  margin-bottom: 20px;
+  border: 1px solid #e8dfd3;
+  border-radius: 18px;
   background: #fffdf9;
+  box-shadow: 0 6px 20px rgba(65, 46, 31, 0.05);
   overflow-wrap: anywhere;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.saved-card h3 {
-  margin: 0 0 10px;
-  line-height: 1.4;
+.saved-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(65, 46, 31, 0.09);
 }
+
+
+.saved-card h3 {
+  margin: 16px 0 8px;
+  color: #302116;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+}
+
 
 .saved-card p {
   margin: 6px 0;
   line-height: 1.6;
+}
+
+.saved-card > p:not(.template-number) {
+  color: #887c70;
+  font-size: 13px;
 }
 
 @media (max-width: 600px) {
@@ -1401,10 +1423,13 @@ home-screen .saved-actions .action-delete {
   }
 
   .saved-card {
-    padding: 16px;
+    padding: 18px;
+  }
+
+  .saved-card h3 {
+    font-size: 20px;
   }
 }
-
 
 /* Horizontal layout for saved portfolio buttons */
 .saved-actions {
@@ -1501,4 +1526,98 @@ home-screen .saved-actions .action-delete {
 .action-update {
   background: #D9B99B;
   color: #4B3326;
+}
+
+/* Saved portfolio template labels */
+
+.saved-card .template-number {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.saved-card .template-number:first-letter {
+  text-transform: uppercase;
+}
+
+/* Simple — caramel */
+.saved-card .template-number {
+  background: #f3e1cd;
+  color: #805126;
+}
+.saved-card-simple {
+  background: #fff0dc;
+  border-color: #dfb98f;
+}
+
+.saved-card-modern {
+  background: #e6f0e3;
+  border-color: #a9c5a1;
+}
+
+.saved-card-professional {
+  background: #e7effb;
+  border-color: #a9c2e8;
+}
+
+
+/* Make each saved portfolio color visible */
+
+.home-screen .saved-card-simple {
+  background: #D49A6B !important;
+  border-color: #A96F43 !important;
+}
+
+
+.home-screen .saved-card-modern {
+  background: #354638 !important;
+  border-color: #667A58 !important;
+}
+
+.home-screen .saved-card-professional {
+  background: #172638 !important;
+  border-color: #425A76 !important;
+}
+.home-screen .saved-card > p:not(.template-number) {
+  color: #E2D8CC !important;
+}
+
+
+/* Individual saved card font colors */
+
+/* Simple — dark brown */
+.home-screen .saved-card-simple h3 {
+  color: #321D18 !important;
+}
+
+.home-screen .saved-card-simple > p:not(.template-number) {
+  color: #654735 !important;
+}
+
+/* Modern — warm cream */
+.home-screen .saved-card-modern h3 {
+  color: #F6ECDC !important;
+}
+
+.home-screen .saved-card-modern > p:not(.template-number) {
+  color: #D5DFC9 !important;
+}
+
+/* Professional — cool white */
+.home-screen .saved-card-professional h3 {
+  color: #F0F1F3 !important;
+}
+
+.home-screen .saved-card-professional > p:not(.template-number) {
+  color: #C5D0E0 !important;
+}
+/* Keep Professional portfolio sections clean and flat */
+.professional-container .professional-section {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
