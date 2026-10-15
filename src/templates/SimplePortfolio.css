@@ -225,3 +225,21 @@
     line-height: 1.8;
   }
 }
+
+
+.simple-profile-picture {
+  display: block;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  border: 3px solid #e8e3d9;
+}
+
+@media (max-width: 650px) {
+  .simple-profile-picture {
+    width: 200px;
+    height: 200px;
+  }
+}

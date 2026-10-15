@@ -33,6 +33,7 @@ useEffect(() => {
 
 
   const [fullName, setFullName] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
@@ -53,6 +54,7 @@ useEffect(() => {
   const fields = {
   
   full_name: fullName,
+  profile_picture: profilePicture,
   email,
   contact_number: contactNumber,
   address,
@@ -64,7 +66,43 @@ useEffect(() => {
   social_links: socialLinks,
   template: selectedTemplate,
 };
+const uploadProfilePicture = async (file) => {
+  if (!file) return;
 
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Please choose an image smaller than 2 MB.");
+    return;
+  }
+
+  try {
+    const fileExt = file.name.split(".").pop().toLowerCase();
+    const filePath = `${session.user.id}/${crypto.randomUUID()}.${fileExt}`;
+
+    const { error } = await supabase.storage
+      .from("profile-pictures")
+      .upload(filePath, file, {
+        upsert: false,
+        contentType: file.type,
+      });
+
+    if (error) throw error;
+
+    const { data } = supabase.storage
+      .from("profile-pictures")
+      .getPublicUrl(filePath);
+
+    setProfilePicture(data.publicUrl);
+    alert("Profile picture uploaded successfully!");
+  } catch (error) {
+    console.error("Profile picture upload error:", error);
+    alert("Could not upload profile picture: " + error.message);
+  }
+};
   const fetchSavedPortfolios = async () => {
     if (!session?.user?.id) return;
 
@@ -154,6 +192,7 @@ useEffect(() => {
   const setFormValues = (data) => {
     setPortfolioId(data.id);
     setFullName(data.full_name ?? "");
+    setProfilePicture(data.profile_picture ?? "");
     setEmail(data.email ?? "");
     setContactNumber(data.contact_number ?? "");
     setAddress(data.address ?? "");
@@ -305,6 +344,7 @@ useEffect(() => {
   ];
     const portfolioData = {
     fullName,
+    profilePicture,
     email,
     contactNumber,
     address,
@@ -767,16 +807,44 @@ return (
 >
   Change Template
 </button>
-      <h2>{portfolioId ? "Edit Portfolio" : "Create Portfolio"}</h2>
+        <h2>{portfolioId ? "Edit Portfolio" : "Create Portfolio"}</h2>
+              <label htmlFor="profile-picture">Upload Profile Picture</label>
+              <input
+                id="profile-picture"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                style={inputStyle}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    uploadProfilePicture(file);
+                  }
+                }}
+              />
 
-      <label htmlFor="full-name">Full Name</label>
-      <input
-        id="full-name"
-        style={inputStyle}
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-        placeholder="Full Name"
-      />
+              {profilePicture && (
+                <div style={{ textAlign: "center", marginTop: "12px" }}>
+                  <img
+                    src={profilePicture}
+                    alt="Profile preview"
+                    style={{
+                      width: "120px",
+                      height: "120px",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </div>
+              )}
+
+        <label htmlFor="full-name">Full Name</label>
+        <input
+          id="full-name"
+          style={inputStyle}
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Full Name"
+        />
 
       <label htmlFor="email">Email</label>
       <input

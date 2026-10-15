@@ -1,5 +1,3 @@
-
-
 .professional-container {
   display: grid;
   grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.8fr);
@@ -10,6 +8,18 @@
 }
 
 /* LEFT SIDEBAR */
+
+.professional-profile-picture {
+  display: block;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto 28px;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #a9bfd8;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
 
 .professional-sidebar {
   padding: 48px 32px;
@@ -366,11 +376,18 @@
   line-height: 1.35;
 }
 
+
 .professional-container .professional-skill-list {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
 
 .professional-container .professional-skill-list span {
   padding: 8px 12px;
@@ -381,6 +398,11 @@
   font-family: Arial, sans-serif;
   font-size: 13px;
   line-height: 1.4;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .professional-container .professional-wide-card {
@@ -436,4 +458,20 @@
   margin-top: 14px;
   background: #8da5c0;
   content: "";
+}
+
+/* Keep Professional template headings inside their cards */
+.professional-container .professional-section,
+.professional-container .professional-card-grid {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.professional-container .professional-section h2 {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }

@@ -10,6 +10,14 @@ function ProfessionalPortfolio({ data }) {
   return (
     <div className="professional-container">
       <aside className="professional-sidebar">
+        {data.profilePicture && (
+          <img
+            className="professional-profile-picture"
+            src={data.profilePicture}
+            alt={`${data.fullName || "Profile"}'s profile`}
+          />
+        )}
+
         <p className="professional-mark">✳</p>
 
         <p className="professional-label">
@@ -111,21 +119,19 @@ function ProfessionalPortfolio({ data }) {
           )}
         </div>
 
-        
-                {data.experience && (
-                  <section className="professional-section professional-wide-card">
-                    <p className="professional-card-label">03 / CAREER</p>
-                    <h2>Experience</h2>
+        {data.experience && (
+          <section className="professional-section professional-wide-card">
+            <p className="professional-card-label">03 / CAREER</p>
+            <h2>Experience</h2>
 
-                    <div className="professional-timeline">
-                      <span className="professional-timeline-marker" />
-                      <div className="professional-timeline-content">
-                        <p>{data.experience}</p>
-                      </div>
-                    </div>
-                  </section>
-                )}
-
+            <div className="professional-timeline">
+              <span className="professional-timeline-marker" />
+              <div className="professional-timeline-content">
+                <p>{data.experience}</p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {data.projects && (
           <section className="professional-section professional-wide-card">
@@ -141,6 +147,7 @@ function ProfessionalPortfolio({ data }) {
       </main>
     </div>
   );
+
 }
 
 export default ProfessionalPortfolio;

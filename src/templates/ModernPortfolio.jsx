@@ -5,8 +5,12 @@ function ModernPortfolio({ data }) {
     <div className="modern-container">
       <header className="modern-header">
         <div className="modern-nav">
-          <span className="modern-brand">folio<span>.</span></span>
-          <span className="modern-nav-label">PERSONAL PORTFOLIO / 2026</span>
+          <span className="modern-brand">
+            folio<span>.</span>
+          </span>
+          <span className="modern-nav-label">
+            PERSONAL PORTFOLIO / 2026
+          </span>
         </div>
 
         <div className="modern-hero">
@@ -16,23 +20,38 @@ function ModernPortfolio({ data }) {
               ABOUT ME
             </p>
 
-            <h1>
-              {data.fullName || "Your Name"}
-              <span className="modern-title-mark">.</span>
-            </h1>
-
-            <div className="modern-intro-bottom">
-              <p className="modern-role">Curious mind. Creative spirit.</p>
-
-              {data.aboutMe && (
-                <p className="modern-about">{data.aboutMe}</p>
+            <div className="modern-profile-row">
+              {data.profilePicture && (
+                <img
+                  className="modern-profile-picture"
+                  src={data.profilePicture}
+                  alt={`${data.fullName || "Profile"}'s profile`}
+                />
               )}
 
-              {data.email && (
-                <a className="modern-email" href={`mailto:${data.email}`}>
-                  {data.email} <span>↗</span>
-                </a>
-              )}
+              <div className="modern-profile-info">
+                <h1>
+                  {data.fullName || "Your Name"}
+                  <span className="modern-title-mark">.</span>
+                </h1>
+
+                <p className="modern-role">
+                  Curious mind. Creative spirit.
+                </p>
+
+                {data.aboutMe && (
+                  <p className="modern-about">{data.aboutMe}</p>
+                )}
+
+                {data.email && (
+                  <a
+                    className="modern-email"
+                    href={`mailto:${data.email}`}
+                  >
+                    {data.email} <span>↗</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
 
@@ -57,7 +76,10 @@ function ModernPortfolio({ data }) {
       <section className="modern-work-intro">
         <div>
           <p className="modern-eyebrow">THE OVERVIEW</p>
-          <h2>A few things<br />about <span>me.</span></h2>
+          <h2>
+            A few things<br />
+            about <span>me.</span>
+          </h2>
         </div>
         <p className="modern-work-note">
           A collection of my skills, learning, experience, and ideas brought
@@ -66,35 +88,42 @@ function ModernPortfolio({ data }) {
       </section>
 
       <main className="modern-grid">
-          {data.skills && (
-            <section className="modern-card modern-card-skills">
-              <div className="modern-card-top">
-                <span className="modern-number">01 / SKILLS</span>
-                <span className="modern-card-symbol">✳</span>
-              </div>
+        {data.skills && (
+          <section className="modern-card modern-card-skills">
+            <div className="modern-card-top">
+              <span className="modern-number">01 / SKILLS</span>
+              <span className="modern-card-symbol">✳</span>
+            </div>
 
-          <h3>My <br />toolkit</h3>
+            <h3>
+              My <br />toolkit
+            </h3>
 
-          <div className="modern-skills-list">
-              {data.skills.split(/[,\n]/).map((skill) => skill.trim()).filter(Boolean).map((skill, index) => (
-              <span className="modern-skill-tag" key={index}>
-              {skill}
-              </span>
-  ))}
-</div>
+            <div className="modern-skills-list">
+              {data.skills
+                .split(/[,\n]/)
+                .map((skill) => skill.trim())
+                .filter(Boolean)
+                .map((skill, index) => (
+                  <span className="modern-skill-tag" key={index}>
+                    {skill}
+                  </span>
+                ))}
+            </div>
 
-          <span className="modern-card-index">CAPABILITIES</span>
+            <span className="modern-card-index">CAPABILITIES</span>
+          </section>
+        )}
 
-            </section>
-          )}
-            
         {data.projects && (
           <section className="modern-card modern-card-projects">
             <div className="modern-card-top">
               <span className="modern-number">02 / PROJECTS</span>
               <span className="modern-card-symbol">↗</span>
             </div>
-           <h3>Proof of<br />work.</h3>
+            <h3>
+              Proof of<br />work.
+            </h3>
             <p>{data.projects}</p>
             <span className="modern-card-index">SELECTED WORK</span>
           </section>
@@ -106,7 +135,9 @@ function ModernPortfolio({ data }) {
               <span className="modern-number">03 / EXPERIENCE</span>
               <span className="modern-card-symbol">↗</span>
             </div>
-            <h3>Where I've<br />been.</h3>
+            <h3>
+              Where I've<br />been.
+            </h3>
             <p>{data.experience}</p>
             <span className="modern-card-index">THE JOURNEY</span>
           </section>
@@ -129,18 +160,30 @@ function ModernPortfolio({ data }) {
         <footer className="modern-footer">
           <div className="modern-footer-heading">
             <p className="modern-eyebrow">HAVE SOMETHING IN MIND?</p>
-            <h2>Let's make<br /><span>something happen.</span></h2>
+            <h2>
+              Let's make<br />
+              <span>something happen.</span>
+            </h2>
           </div>
 
           <div className="modern-footer-details">
             {data.contactNumber && (
-              <p><span>PHONE</span>{data.contactNumber}</p>
+              <p>
+                <span>PHONE</span>
+                {data.contactNumber}
+              </p>
             )}
             {data.address && (
-              <p><span>LOCATION</span>{data.address}</p>
+              <p>
+                <span>LOCATION</span>
+                {data.address}
+              </p>
             )}
             {data.socialLinks && (
-              <p><span>ELSEWHERE</span>{data.socialLinks}</p>
+              <p>
+                <span>ELSEWHERE</span>
+                {data.socialLinks}
+              </p>
             )}
           </div>
         </footer>

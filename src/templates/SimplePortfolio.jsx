@@ -10,6 +10,14 @@ function SimplePortfolio({ data }) {
         </div>
 
         <div className="simple-intro">
+              {data.profilePicture && (
+                <img
+                  className="simple-profile-picture"
+                  src={data.profilePicture}
+                  alt={`${data.fullName || "Profile"}'s profile`}
+                />
+              )}
+
           <p className="simple-eyebrow">GET TO KNOW ME</p>
 
           <h1>{data.fullName || "Your Name"}</h1>
