@@ -1,0 +1,518 @@
+
+.modern-container {
+  --modern-olive: #26372d;
+  --modern-olive-light: #394c3b;
+  --modern-cream: #f4f0e6;
+  --modern-paper: #fffdf6;
+  --modern-lime: #d4e66d;
+  --modern-muted: #9ba99a;
+  --modern-line: rgba(244, 240, 230, 0.18);
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 34px 24px;
+  background: var(--modern-cream);
+  color: var(--modern-olive);
+  font-family: "DM Sans", sans-serif;
+}
+
+.modern-container *,
+.modern-container *::before,
+.modern-container *::after {
+  box-sizing: border-box;
+}
+
+.modern-container .modern-header {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 25px 38px 0;
+  overflow: hidden;
+  border-radius: 5px !important;
+  background: var(--modern-olive);
+  color: var(--modern-cream);
+}
+
+.modern-nav,
+.modern-header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.modern-nav {
+  padding-bottom: 19px;
+  border-bottom: 1px solid var(--modern-line);
+}
+
+.modern-brand {
+  color: var(--modern-cream);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.modern-brand span {
+  color: var(--modern-lime);
+}
+
+.modern-nav-label,
+.modern-header-bottom {
+  color: var(--modern-muted);
+  font-size: 9px;
+  letter-spacing: 1.6px;
+}
+
+.modern-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+  align-items: center;
+  gap: 28px;
+  padding: 62px 0 54px;
+}
+
+.modern-hero-text {
+  min-width: 0;
+}
+
+.modern-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 22px;
+  color: #748b71;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.modern-header .modern-eyebrow {
+  color: var(--modern-lime);
+}
+
+.modern-status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--modern-lime);
+}
+
+.modern-container .modern-header h1 {
+  margin: 0 0 30px;
+  color: var(--modern-cream);
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(3rem, 7.5vw, 6.4rem);
+  font-weight: 600;
+  letter-spacing: -5px;
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.modern-title-mark {
+  color: var(--modern-lime);
+}
+
+.modern-intro-bottom {
+  max-width: 490px;
+}
+
+.modern-role {
+  margin: 0 0 12px;
+  color: #d7e0d1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modern-about {
+  margin: 0 0 22px;
+  color: #b7c3b4;
+  font-size: 14px;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.modern-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--modern-lime);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.modern-email span {
+  font-size: 17px;
+}
+
+.modern-hero-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  overflow: hidden;
+  background: var(--modern-olive-light);
+}
+
+.modern-art-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(212, 230, 109, 0.55);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modern-art-ring::before,
+.modern-art-ring::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(212, 230, 109, 0.28);
+  border-radius: 50%;
+  inset: 20px;
+}
+
+.modern-art-ring::after {
+  inset: 42px;
+}
+
+.modern-art-block {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--modern-cream);
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.02;
+}
+
+.modern-art-highlight {
+  color: var(--modern-lime);
+}
+
+.modern-art-index {
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  color: #c0cbb9;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.modern-art-star {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+  color: var(--modern-lime);
+  font-size: 2rem;
+}
+
+.modern-header-bottom {
+  min-height: 52px;
+  border-top: 1px solid var(--modern-line);
+}
+
+.modern-container .modern-work-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 66px 0 30px;
+  background: transparent;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.modern-work-intro .modern-eyebrow {
+  margin-bottom: 12px;
+}
+
+.modern-container .modern-work-intro h2 {
+  margin: 0;
+  color: var(--modern-olive);
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.04;
+}
+
+.modern-work-intro h2 span {
+  color: #7d9468;
+}
+
+.modern-work-note {
+  max-width: 300px;
+  margin: 0 0 5px;
+  color: #73796c;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Portfolio cards */
+
+.modern-container .modern-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+.modern-container .modern-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 300px;
+  padding: 25px;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 4px !important;
+}
+
+.modern-container .modern-card-skills {
+  background: #dfe6d5;
+  color: var(--modern-olive);
+}
+
+.modern-container .modern-card-projects {
+  background: var(--modern-lime);
+  color: var(--modern-olive);
+}
+
+.modern-container .modern-card-experience {
+  background: #e3e0d4;
+  color: var(--modern-olive);
+}
+
+.modern-container .modern-card-education {
+  background: var(--modern-olive);
+  color: var(--modern-cream);
+}
+
+.modern-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modern-number {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+
+.modern-card-symbol {
+  font-size: 1.35rem;
+}
+
+.modern-container .modern-card h3 {
+  margin: 38px 0 16px;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -1.3px;
+  line-height: 1.05;
+}
+
+.modern-container .modern-card p {
+  margin: 0 0 35px;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.modern-card-index {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid currentColor;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.7px;
+  opacity: 0.7;
+}
+
+.modern-container .modern-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.8fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 20px auto 0;
+  padding: 38px;
+  border-radius: 4px !important;
+  background: #e4e8db;
+}
+
+.modern-footer .modern-eyebrow {
+  margin-bottom: 15px;
+}
+
+.modern-container .modern-footer h2 {
+  margin: 0;
+  color: var(--modern-olive);
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 600;
+  letter-spacing: -1.8px;
+  line-height: 1.05;
+}
+
+.modern-footer-heading h2 span {
+  color: #7d9468;
+}
+
+.modern-footer-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.modern-footer-details p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  color: #435344;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.modern-footer-details p span {
+  color: #788673;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.modern-bottom-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 0 8px;
+  color: #858779;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .modern-container {
+    padding: 14px;
+  }
+
+  .modern-container .modern-header {
+    padding: 19px 20px 0;
+  }
+
+  .modern-nav-label {
+    max-width: 125px;
+    font-size: 8px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  .modern-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 48px 0 30px;
+  }
+
+  .modern-container .modern-header h1 {
+    font-size: clamp(2.8rem, 12vw, 4.6rem);
+    letter-spacing: -2.5px;
+  }
+
+  .modern-hero-art {
+    min-height: 250px;
+  }
+
+  .modern-art-ring {
+    width: 205px;
+    height: 205px;
+  }
+
+  .modern-art-block {
+    font-size: 2.4rem;
+  }
+
+  .modern-header-bottom {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .modern-container .modern-work-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 46px 4px 24px;
+  }
+
+  .modern-container .modern-work-intro h2 {
+    font-size: 2.7rem;
+  }
+
+  .modern-work-note {
+    max-width: 100%;
+  }
+
+  .modern-container .modern-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .modern-container .modern-card {
+    min-height: 255px;
+    padding: 23px;
+  }
+
+  .modern-container .modern-card h3 {
+    margin-top: 30px;
+    font-size: 2.1rem;
+  }
+
+  .modern-container .modern-footer {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 27px 22px;
+  }
+
+  .modern-container .modern-footer h2 {
+    font-size: 2.5rem;
+  }
+
+  .modern-bottom-line {
+    flex-wrap: wrap;
+    font-size: 8px;
+    line-height: 1.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modern-container * {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
