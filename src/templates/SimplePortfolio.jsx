@@ -34,7 +34,10 @@ function SimplePortfolio({ data }) {
 
         <div className="simple-header-bottom">
           <span>THOUGHTFUL. CURIOUS. ALWAYS LEARNING.</span>
-          <span className="simple-mark">✳</span>
+         <span
+            className="simple-mark decorative-star"
+            aria-hidden="true"
+          />
         </div>
       </header>
 

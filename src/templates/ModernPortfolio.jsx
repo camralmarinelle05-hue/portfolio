@@ -43,14 +43,29 @@ function ModernPortfolio({ data }) {
                   <p className="modern-about">{data.aboutMe}</p>
                 )}
 
-                {data.email && (
-                  <a
-                    className="modern-email"
-                    href={`mailto:${data.email}`}
-                  >
-                    {data.email} <span>↗</span>
-                  </a>
-                )}
+               {data.email && (
+                    <a
+                      className="modern-email"
+                      href={`mailto:${data.email}`}
+                    >
+                      {data.email}{" "}
+                      <svg
+                        className="arrow-symbol"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M7 17 17 7" />
+                        <path d="M8 7h9v9" />
+                      </svg>
+                    </a>
+                    )}
               </div>
             </div>
           </div>
@@ -63,13 +78,33 @@ function ModernPortfolio({ data }) {
               <span className="modern-art-highlight">ACTION.</span>
             </div>
             <span className="modern-art-index">M—01</span>
-            <span className="modern-art-star">✳</span>
+            <span
+              className="modern-art-star decorative-star"
+              aria-hidden="true"
+          />
           </div>
         </div>
 
         <div className="modern-header-bottom">
           <span>THINK / MAKE / GROW</span>
-          <span>SCROLL TO EXPLORE ↓</span>
+          <span>
+              SCROLL TO EXPLORE{" "}
+              <svg
+                className="arrow-symbol"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 5v14" />
+                <path d="m19 12-7 7-7-7" />
+              </svg>
+            </span>
         </div>
       </header>
 
@@ -92,7 +127,7 @@ function ModernPortfolio({ data }) {
           <section className="modern-card modern-card-skills">
             <div className="modern-card-top">
               <span className="modern-number">01 / SKILLS</span>
-              <span className="modern-card-symbol">✳</span>
+              <span className="modern-card-symbol decorative-star" aria-hidden="true" />
             </div>
 
             <h3>
@@ -119,7 +154,21 @@ function ModernPortfolio({ data }) {
           <section className="modern-card modern-card-projects">
             <div className="modern-card-top">
               <span className="modern-number">02 / PROJECTS</span>
-              <span className="modern-card-symbol">↗</span>
+              <svg
+                className="modern-card-symbol arrow-symbol"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
             </div>
             <h3>
               Proof of<br />work.
@@ -133,7 +182,21 @@ function ModernPortfolio({ data }) {
           <section className="modern-card modern-card-experience">
             <div className="modern-card-top">
               <span className="modern-number">03 / EXPERIENCE</span>
-              <span className="modern-card-symbol">↗</span>
+              <svg
+                className="modern-card-symbol arrow-symbol"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
             </div>
             <h3>
               Where I've<br />been.
@@ -147,7 +210,10 @@ function ModernPortfolio({ data }) {
           <section className="modern-card modern-card-education">
             <div className="modern-card-top">
               <span className="modern-number">04 / EDUCATION</span>
-              <span className="modern-card-symbol">✳</span>
+              <span
+                className="modern-card-symbol decorative-star"
+                aria-hidden="true"
+              />
             </div>
             <h3>Where I Learned<br />the Ropes</h3>
             <p>{data.education}</p>

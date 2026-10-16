@@ -3,7 +3,7 @@
   padding: 56px 24px;
   color: #40372f;
   background: #f6f2eb;
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Lora", Georgia, serif;
 }
 
 .simple-header {
@@ -242,4 +242,9 @@
     width: 200px;
     height: 200px;
   }
+}
+/* Simple template typography */
+.simple-intro h1,
+.simple-section h2 {
+  font-family: "Lora", Georgia, serif;
 }

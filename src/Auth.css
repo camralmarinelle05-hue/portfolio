@@ -143,6 +143,7 @@
   box-shadow: 0 0 0 3px rgba(152, 112, 79, 0.12);
 }
 
+
 .auth-submit {
   width: 100%;
   min-height: 51px;
@@ -152,7 +153,7 @@
   gap: 12px;
   margin-top: 5px;
   padding: 14px 18px;
-  border: none;
+  border: 1px solid #49372b;
   border-radius: 10px;
   background: #49372b;
   color: #fffaf2;
@@ -164,6 +165,7 @@
 
 .auth-submit:hover:not(:disabled) {
   background: #624936;
+  border-color: #624936;
   transform: translateY(-1px);
 }
 
@@ -171,6 +173,7 @@
   opacity: 0.65;
   cursor: not-allowed;
 }
+
 
 .auth-submit span {
   font-size: 18px;
@@ -207,20 +210,25 @@
   text-align: center;
 }
 
+/* Switch between Login and Create Account */
+
 .auth-switch button {
-  padding: 3px;
-  border: none;
-  background: transparent;
-  color: #8d5b35;
+  padding: 7px 12px !important;
+  border: 1px solid #ded8ce !important;
+  border-radius: 8px !important;
+  background: #f3f0ea !important;
+  color: #49372b !important;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .auth-switch button:hover {
-  color: #49372b;
-  text-decoration: underline;
+  background: #e7e1d7 !important;
+  border-color: #c9bdae !important;
 }
+
 
 .auth-footer {
   margin: 30px 0 0;

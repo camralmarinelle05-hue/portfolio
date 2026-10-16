@@ -1,7 +1,7 @@
 import "./App.css";
 import SimplePortfolio from "./templates/SimplePortfolio";
 import ModernPortfolio from "./templates/ModernPortfolio";
-import ProfessionalPortfolio from "./templates/ProfessionalPortfolio";
+import CreativePortfolio from "./templates/CreativePortfolio";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import Auth from "./Auth";
@@ -9,6 +9,7 @@ import Auth from "./Auth";
 
 function App() {
 const [session, setSession] = useState(null);
+const [showLogin, setShowLogin] = useState(false);
 const [checkingSession, setCheckingSession] = useState(true);
 const [showPreview, setShowPreview] = useState(false);
 const [showSavedPortfolios, setShowSavedPortfolios] = useState(false);
@@ -358,12 +359,10 @@ const uploadProfilePicture = async (file) => {
 if (checkingSession) {
   return <p>Checking login...</p>;
 }
-
-if (!session) {
+  if (showLogin && !session) {
   return <Auth />;
 }
-
-    if (!templateChosen) {
+if (!templateChosen) {
     if (showSavedPortfolios) {
       return (
         <div className="home-screen">
@@ -373,7 +372,7 @@ if (!session) {
               className="brand"
               onClick={() => setShowSavedPortfolios(false)}
             >
-              <span className="brand-mark">✳</span>
+              <span className="brand-mark decorative-star" aria-hidden="true" />
               <span>folio.</span>
             </button>
 
@@ -382,7 +381,22 @@ if (!session) {
               className="nav-saved-button"
               onClick={() => setShowSavedPortfolios(false)}
             >
-              ← Back to Home
+                <svg
+                    className="arrow-symbol"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5" />
+                    <path d="m12 19-7-7 7-7" />
+                  </svg>{" "}
+                Back to Home
             </button>
           </header>
 
@@ -395,8 +409,10 @@ if (!session) {
                            key={portfolio.id}>
                        
                         <p className="template-number">
-                          {(portfolio.template || "simple").toUpperCase()}
-                        </p>
+                              {(portfolio.template || "simple") === "professional"
+                                ? "CREATIVE"
+                                : (portfolio.template || "simple").toUpperCase()}
+                          </p>
                         <h3>{portfolio.full_name || "Untitled Portfolio"}</h3>
                         <p>{portfolio.email || "No email provided"}</p>
                           
@@ -448,7 +464,7 @@ if (!session) {
           className="brand"
           onClick={() => setTemplateChosen(false)}
         >
-          <span className="brand-mark">✳</span>
+          <span className="brand-mark decorative-star" aria-hidden="true" />
           <span>folio.</span>
         </button>
 
@@ -464,19 +480,38 @@ if (!session) {
                     setShowSavedPortfolios(true);
                   }}
                 >
-                  My Portfolios
+          My Portfolios
+          </button>
+          </nav>
+                <button
+                  type="button"
+                  className="nav-account-button"
+                  onClick={async () => {
+                    if (session) {
+                      await supabase.auth.signOut();
+                    } else {
+                      setShowLogin(true);
+                    }
+                  }}
+                >
+                  {session ? "Log out" : "Log in"}{" "}
+                    <svg
+                    className="arrow-symbol"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M8 7h9v9" />
+                  </svg>
                 </button>
-        </nav>
 
-        <button
-          type="button"
-          className="nav-account-button"
-          onClick={async () => {
-            await supabase.auth.signOut();
-          }}
-        >
-          Log out ↗
-        </button>
       </header>
 
       <section className="hero-section" id="home">
@@ -488,33 +523,35 @@ if (!session) {
           </p>
 
           <h1>
-            Your work.
+            Your journey.
             <br />
-            Your story.
+            Your vision.
             <br />
-            <span>Your portfolio.</span>
+            <span>Your Portfolio.</span>
           </h1>
 
           <p className="hero-description">
-            Your story deserves to be seen.
-            Create a portfolio that reflects your journey, highlights your strengths, 
-            and brings your ideas to life. 
-            Choose your style, make it your own, and share your work with confidence.
+            Thoughtfully designed for students, professionals, and creators,
+            our portfolio generator helps you transform your experiences,
+            skills, and achievements into a beautiful digital presence.
+            Choose from Simple, Modern, or Creative templates and share
+            your story with confidence and style.
           </p>
 
           <a className="hero-cta" href="#templates">
-            Find your template <span>↗</span>
+            Find your template <span className="template-plus">+</span>
           </a>
 
           <p className="hero-note">
-            ✳ Three styles. One space to tell your story.
+  <         span className="decorative-star" aria-hidden="true" />
+              Three styles. One space to tell your story.
           </p>
         </div>
 
         <div className="hero-art" aria-label="Portfolio style previews">
           <div className="floating-note">
-            MADE BY YOU
-            <span>✳</span>
+              MADE BY YOU
+              <span className="decorative-star" aria-hidden="true" />
           </div>
 
           <div className="mini-portfolio mini-modern">
@@ -536,7 +573,9 @@ if (!session) {
 
           <div className="mini-portfolio mini-simple">
             <span className="mini-label">02 / SIMPLE</span>
-            <div className="mini-avatar">✳</div>
+            <div className="mini-avatar">
+              <span className="decorative-star" aria-hidden="true" />
+            </div>
             <p className="mini-hello">Hello, I'm</p>
             <h3>Your Name.</h3>
             <p className="mini-caption">Your story, thoughtfully told.</p>
@@ -544,8 +583,11 @@ if (!session) {
             <div className="mini-line short" />
           </div>
 
-          <span className="art-sparkle sparkle-one">✳</span>
-          <span className="art-sparkle sparkle-two">✧</span>
+          <span
+              className="art-sparkle sparkle-one decorative-star"
+              aria-hidden="true"
+          />
+          <span className="art-sparkle sparkle-two decorative-star" aria-hidden="true" />
         </div>
       </section>
 
@@ -574,7 +616,9 @@ if (!session) {
                   <i /><i /><i />
                 </div>
               </div>
-              <div className="preview-circle">✳</div>
+                <div className="preview-circle">
+               <span className="decorative-star" aria-hidden="true" />
+             </div>
             </div>
 
             <div className="template-info">
@@ -592,7 +636,21 @@ if (!session) {
                   setTemplateChosen(true);
                 }}
               >
-                ↗
+                <svg
+                className="arrow-symbol"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
               </button>
             </div>
           </article>
@@ -601,15 +659,49 @@ if (!session) {
             <div className="template-preview preview-modern">
               <div className="preview-topline">
                 <span>YOUR NAME®</span>
-                <span>SELECTED WORK ↗</span>
+                <span>
+                  SELECTED WORK{" "}
+                  <svg
+                    className="arrow-symbol"
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M8 7h9v9" />
+                  </svg>
+                </span>
               </div>
               <div className="preview-modern-shape" />
               <div className="preview-modern-content">
                 <p>CREATIVE PORTFOLIO</p>
                 <h3>Make ideas<br />matter.</h3>
-                <span className="preview-pill">EXPLORE MY WORK ↗</span>
+               <span className="preview-pill">
+                    EXPLORE MY WORK{" "}
+                    <svg
+                      className="arrow-symbol"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17 17 7" />
+                      <path d="M8 7h9v9" />
+                    </svg>
+                  </span>
               </div>
-              <span className="preview-star">✳</span>
+              <span className="preview-star decorative-star" aria-hidden="true" />
             </div>
 
             <div className="template-info">
@@ -627,7 +719,21 @@ if (!session) {
                   setTemplateChosen(true);
                 }}
               >
-                ↗
+                <svg
+                  className="arrow-symbol"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
               </button>
             </div>
           </article>
@@ -650,20 +756,34 @@ if (!session) {
 
             <div className="template-info">
               <div>
-                <p className="template-number">03 — THE EDITORIAL</p>
-                <h3>Professional</h3>
+                <p className="template-number">03 — THE CREATIVE</p>
+                <h3>Creative</h3>
                 <p>Chic, cool, sophisticated.</p>
               </div>
               <button
                 type="button"
                 className="template-arrow"
-                aria-label="Choose Professional template"
+                aria-label="Choose Creative template"
                 onClick={() => {
                   setSelectedTemplate("professional");
                   setTemplateChosen(true);
                 }}
               >
-                ↗
+                <svg
+                  className="arrow-symbol"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
               </button>
             </div>
           </article>
@@ -672,13 +792,30 @@ if (!session) {
 
       
       <footer className="home-footer">
-        <span className="footer-brand">✳ folio.</span>
+        <span className="footer-brand">
+          <span className="decorative-star" aria-hidden="true" /> folio.
+        </span>
         <span>Made to tell your story.</span>
         <button
-          type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          Back to top ↑
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Back to top{" "}
+          <svg
+            className="arrow-symbol"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M12 19V5" />
+            <path d="m5 12 7-7 7 7" />
+          </svg>
         </button>
       </footer>
     </div>
@@ -686,18 +823,48 @@ if (!session) {
 }
 
   if (showPreview) {
+  const previewButtons = (
+    <div className="preview-navigation">
+      <button
+        type="button"
+        className="logout-button"
+        onClick={() => setShowPreview(false)}
+      >
+        <svg
+          className="arrow-symbol"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
+        </svg>{" "}
+        Back to Edit
+      </button>
+
+      <button
+        type="button"
+        className="preview-home-button"
+        onClick={() => {
+          setShowPreview(false);
+          setTemplateChosen(false);
+        }}
+      >
+        Home
+      </button>
+    </div>
+  );
+
   if (selectedTemplate === "simple") {
     return (
       <>
-        <button
-          type="button"
-          className="logout-button"
-          onClick={() => setShowPreview(false)}
-          style={{ margin: "20px" }}
-        >
-          ← Back to Edit
-        </button>
-
+        {previewButtons}
         <SimplePortfolio data={portfolioData} />
       </>
     );
@@ -706,15 +873,7 @@ if (!session) {
   if (selectedTemplate === "modern") {
     return (
       <>
-        <button
-            type="button"
-            className="logout-button"
-            onClick={() => setShowPreview(false)}
-            style={{ margin: "20px" }}
-          >
-            ← Back to Edit
-          </button>
-
+        {previewButtons}
         <ModernPortfolio data={portfolioData} />
       </>
     );
@@ -722,16 +881,8 @@ if (!session) {
 
   return (
     <>
-      <button
-      type="button"
-      className="logout-button"
-      onClick={() => setShowPreview(false)}
-      style={{ margin: "20px" }}
-    >
-      ← Back to Edit
-    </button>
-
-      <ProfessionalPortfolio data={portfolioData} />
+      {previewButtons}
+      <CreativePortfolio data={portfolioData} />
     </>
   );
 }
@@ -761,8 +912,23 @@ return (
     setShowSavedPortfolios(false);
   }}
 >
-  ← Home
-</button>
+        <svg
+        className="arrow-symbol"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M19 12H5" />
+        <path d="m12 19-7-7 7-7" />
+      </svg>{" "}
+      Home
+      </button>
   <button
   type="button"
   className="logout-button"

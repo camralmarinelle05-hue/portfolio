@@ -1,6 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root {
   font-family: 'DM Sans', sans-serif;
   color: #30241f;
@@ -1620,4 +1618,134 @@ home-screen .saved-actions .action-delete {
   border-radius: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
+}
+.hero-cta .template-plus {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 3px;
+  vertical-align: middle;
+  transform: translateY(-3px);
+}
+.decorative-star {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  clip-path: polygon(
+    50% 0%,
+    62% 35%,
+    100% 50%,
+    62% 62%,
+    50% 100%,
+    38% 62%,
+    0% 50%,
+    38% 35%
+  );
+  vertical-align: middle;
+  flex-shrink: 0;
+ transform: translate(-3px, -3px);
+}
+.arrow-symbol {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1;
+  color: inherit;
+  vertical-align: middle;
+}
+
+/* Individual fonts for template selection cards */
+
+/* Simple — elegant and timeless */
+.card-simple .template-info h3,
+.preview-simple-content h3 {
+  font-family: "Lora", Georgia, serif;
+}
+
+/* Modern — clean and geometric */
+.card-modern .template-info h3,
+.preview-modern-content h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* CREATIVE — expressive editorial style */
+.card-professional .template-info h3,
+.card-professional .preview-pro-content h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+/* Keep descriptions readable */
+.card-simple .template-info > div > p:not(.template-number),
+.card-modern .template-info > div > p:not(.template-number),
+.card-professional .template-info > div > p:not(.template-number) {
+  font-family: "Manrope", sans-serif;
+}
+
+/* Individual typography for saved portfolio cards */
+
+/* Simple — elegant and timeless */
+.saved-card-simple h3 {
+  font-family: "Lora", Georgia, serif;
+}
+
+/* Modern — bold and geometric */
+.saved-card-modern h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Creative — editorial and expressive */
+.saved-card-professional h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* Consistent, readable supporting text */
+.saved-card-simple > p:not(.template-number),
+.saved-card-modern > p:not(.template-number),
+.saved-card-professional > p:not(.template-number) {
+  font-family: "Manrope", sans-serif;
+}
+/* Preview page navigation */
+.preview-navigation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* Back to Edit — beige */
+.preview-navigation button.logout-button {
+  margin: 0 !important;
+  background-color: #F3F0EA !important;
+  color: #39372F !important;
+  border: 1px solid #DED8CE !important;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Home — warm cocoa brown */
+.preview-navigation button.preview-home-button {
+  background-color: #795548 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #795548 !important;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.preview-navigation button.preview-home-button:hover {
+  background-color: #604237 !important;
+  border-color: #604237 !important;
 }

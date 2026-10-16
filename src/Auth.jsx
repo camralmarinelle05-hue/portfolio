@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { supabase } from "./supabase";
 import "./Auth.css";
@@ -49,7 +48,10 @@ export default function Auth() {
 
       <section className="auth-card">
         <div className="auth-brand">
-          <span className="auth-brand-mark">✳</span>
+          <span
+              className="auth-brand-mark decorative-star"
+              aria-hidden="true"
+          />
           <span>folio<span className="auth-brand-dot">.</span></span>
         </div>
 
@@ -101,7 +103,23 @@ export default function Auth() {
               : isLogin
                 ? "Log In to Folio"
                 : "Create My Account"}
-            {!loading && <span>↗</span>}
+           {!loading && (
+            <svg
+              className="arrow-symbol"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M7 17 17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+)}
           </button>
         </form>
 
@@ -137,7 +155,8 @@ export default function Auth() {
         </div>
 
         <p className="auth-footer">
-          ✳ &nbsp; Made to tell your story.
+          <span className="decorative-star" aria-hidden="true" />
+          &nbsp; Made to tell your story.
         </p>
       </section>
     </main>
